@@ -1,10 +1,8 @@
 const btn = document.getElementById('showCardBtn');
-const map = document.getElementById('openMap');
 const overlay = document.getElementById('overlay');
 const cardImg1 = document.getElementById('cardImg1');
 const cardImg2 = document.getElementById('cardImg2');
 const closeBtn = document.getElementById('closeBtn');
-const closeMap = document.getElementById('closeMap');
 
 btn.addEventListener('click', () => {
   const cardNumber = Math.floor(Math.random() * 20) + 1;
@@ -21,15 +19,6 @@ btn.addEventListener('click', () => {
 
 closeBtn.addEventListener('click', () => {
   overlay.classList.add('hidden');
-});
-
-map.addEventListener('click', () => {
-  window.location.href = 'map.html';
-});
-
-/* Way to go back to principal page */
-closeMap.addEventListener('click', () => {
-  window.location.href = 'index.html';
 });
 
 function showPoster() {
