@@ -24,7 +24,7 @@ closeBtn.addEventListener('click', () => {
 });
 
 map.addEventListener('click', () => {
-  window.location.href = '/map.html';
+  window.location.href = 'map.html';
 });
 
 /* Way to go back to principal page */
