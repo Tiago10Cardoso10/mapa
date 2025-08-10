@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Somos Feitos do Mesmo Coração</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <img src="images/logo.png" alt="Logo Santa Casa da Misericórdia de Amarante" class="logo" />
+  </header>
+
+  <main>
+    <div class="formatBtn">
+      <button id="closeMap">Voltar à página principal</button>
+    </div>
+
+    <div class="map-container">
+      <img src="images/map.png" alt="Mapa de Amarante" class="map-image">
+
+      <!-- Corações clicáveis -->
+      <div class="heart" style="top: 30%; left: 25%;" onclick="openPoster()">❤️
+      </div>
+    </div>
+
+    <div id="poster" class="poster">
+      <div id="cardModal">
+        <span class="close-btn" onclick="closePoster()">×</span>
+
+        <img id="cardImg1" src="" alt="Cartão parte 1" />
+
+        <textarea placeholder="Deixe a sua mensagem..."></textarea>
+
+        <div id="shareButtons">
+          <button class="share-btn" onclick="sendMessage('teste')">Enviar</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="https://www.facebook.com/profile.php?id=61563599100017" target="_blank">
+      Facebook da Santa Casa da Misericórdia de Amarante
+    </a>
+
+    <p>#SomosFeitosDoMesmoCoração</p>
+    <p>© 2025 Santa Casa da Misericórdia de Amarante. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

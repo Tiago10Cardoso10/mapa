@@ -1,79 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 
 <head>
-  <title>Mapa Interativo – Amarante</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <style>
-    #map {
-      height: 90vh;
-    }
-
-    #formulario {
-      padding: 10px;
-      font-family: Arial;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Somos Feitos do Mesmo Coração</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 
 <body>
 
-<div id="map"></div>
+  <header>
+    <img src="images/logo.png" alt="Logo Santa Casa da Misericórdia de Amarante" class="logo" />
+  </header>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-  const webAppUrl = "YOUR_WEB_APP_URL";
+  <main>
+    <h1>Somos Feitos do Mesmo Coração</h1>
+    <h2>Uma campanha que quer tocar o coração da comunidade.</h2>
 
-  const map = L.map('map').setView([41.2712, -8.0816], 14); // Coordenadas de Amarante
+    <p id="texto-explicativo">
+      Entre os dias 22 e 29 de agosto, a Santa Casa da Misericórdia de Amarante celebra os
+      seus 496 anos a fazer o bem com uma campanha que quer tocar o coração da
+      comunidade.
+      Espalhadas pela cidade, frases simples e poéticas convidam à reflexão, à empatia e à
+      bondade. Em jardins, largos e ruas, surgem pequenos lembretes de que todos
+      partilhamos a mesma humanidade.
+      Mais do que uma ação simbólica, esta campanha é um gesto coletivo de cuidado. Um
+      apelo à paz, ao respeito e à ternura que queremos ver crescer à nossa volta.
+      Porque no essencial… somos todos feitos do mesmo coração.
+      Partilhe a sua foto
+    </p>
+    <div class="formatBtn">
+      <button id="showCardBtn">Quero descobrir o meu gesto de bondade</button>
+      <button id="openMap">Descobre no Mapa</button>
+    </div>
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
+    <div id="overlay" class="hidden">
+      <div id="cardModal">
+        <span id="closeBtn">&times;</span>
 
-  map.on('click', function (e) {
-    const lat = e.latlng.lat;
-    const lng = e.latlng.lng;
+        <img id="cardImg1" src="" alt="Cartão parte 1" />
+        <img id="cardImg2" src="" alt="Cartão parte 2" />
 
-    const popupContent = `
-      <div id="formulario">
-        <strong>Nova Sugestão</strong><br/>
-        <label>Nome (opcional):</label><br/>
-        <input type="text" id="nome" /><br/>
-        <label>Sugestão:</label><br/>
-        <textarea id="sugestao" rows="3" cols="25"></textarea><br/>
-        <button onclick="enviarSugestao(${lat}, ${lng})">Enviar</button>
+        <div id="shareButtons">
+          <button class="share-btn" onclick="shareOnFacebook()">Partilhar no Facebook</button>
+        </div>
       </div>
-    `;
+    </div>
+    <img src="images/homepage_image.png" alt="Imagem decorativa" class="img-abaixo-botao">
+  </main>
 
-    L.popup()
-      .setLatLng(e.latlng)
-      .setContent(popupContent)
-      .openOn(map);
-  });
+  <footer>
+    <a href="https://www.facebook.com/profile.php?id=61563599100017" target="_blank">
+      Facebook da Santa Casa da Misericórdia de Amarante
+    </a>
 
-  function enviarSugestao(lat, lng) {
-    const nome = document.getElementById("nome").value;
-    const sugestao = document.getElementById("sugestao").value;
+    <p>#SomosFeitosDoMesmoCoração</p>
+    <p>© 2025 Santa Casa da Misericórdia de Amarante. Todos os direitos reservados.</p>
+  </footer>
 
-    fetch(webAppUrl, {
-      method: "POST",
-      body: JSON.stringify({ nome, sugestao, lat, lng }),
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-      .then(() => {
-        alert("Sugestão enviada com sucesso!");
-        map.closePopup();
-      })
-      .catch(() => {
-        alert("Erro ao enviar sugestão.");
-      });
-  }
-</script>
-
+  <script src="script.js"></script>
 </body>
 
 </html>
