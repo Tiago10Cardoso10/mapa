@@ -79,7 +79,7 @@ async function sendMessage(name) {
 
   try {
     const response = await fetch(
-      'https://script.google.com/macros/s/AKfycbxJoMFcTmYg9zAeSVSfJXGI4UXpx2rlILOQ0chpm8OIk0Z31Qoqkrojstlghb_E6vd86A/exec',
+      'https://script.google.com/macros/s/AKfycbyd1qyylWEWJ3DcvVhbYRJnUCqdthYhgjRSkk9oZAc0Qcl_2krKznH3z9Bx46wUBBOMVA/exec',
       {
         method: 'POST',
         headers: {
@@ -89,6 +89,11 @@ async function sendMessage(name) {
       }
     );
 
+    if (!response.ok) {
+      // HTTP status não OK (ex: 4xx, 5xx)
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
     const result = await response.json();
 
     if (result.status === 'success') {
@@ -96,7 +101,7 @@ async function sendMessage(name) {
       document.querySelector('.poster textarea').value = "";
       closePoster();
     } else {
-      alert("Erro ao enviar mensagem.");
+      alert("Erro ao enviar mensagem: " + (result.message || "Erro desconhecido"));
     }
   } catch (error) {
     alert("Erro na comunicação: " + error.message);
