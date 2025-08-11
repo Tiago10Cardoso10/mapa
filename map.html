@@ -6,26 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Somos Feitos do Mesmo Coração</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 
 <body>
   <header>
-    <img src="images/logo.png" alt="Logo Santa Casa da Misericórdia de Amarante" class="logo" />
-  </header>
-
-  <main>
     <div class="formatBtn">
       <a href="index.html">
         <button>Voltar à página principal</button>
       </a>
     </div>
+    <img src="images/logo.png" alt="Logo Santa Casa da Misericórdia de Amarante" class="logo" />
+  </header>
 
-    <div class="map-container">
-      <img src="images/map.png" alt="Mapa de Amarante" class="map-image">
+  <main>
 
-      <!-- Corações clicáveis -->
-      <div class="heart" style="top: 30%; left: 25%;" onclick="openPoster()">❤️</div>
-      <div class="heart" style="top: 39%; left: 65%;" onclick="openPoster()">❤️</div>
+    <div class="map-container" style="position: relative; width: 100%; height: 500px;">
+      <!-- Mapa Leaflet -->
+      <div id="map" style="width: 100%; height: 100%;"></div>
     </div>
 
     <div id="poster" class="poster">
@@ -37,7 +37,7 @@
         <textarea placeholder="Deixe a sua mensagem..."></textarea>
 
         <div id="shareButtons">
-          <button class="share-btn" onclick="sendMessage('teste')">Enviar</button>
+          <button class="share-btn" onclick="sendMessage()">Enviar</button>
         </div>
       </div>
     </div>
@@ -53,6 +53,7 @@
     <p>© 2025 Santa Casa da Misericórdia de Amarante. Todos os direitos reservados.</p>
   </footer>
 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="script.js"></script>
 </body>
 
