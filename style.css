@@ -12,8 +12,12 @@ body {
 }
 
 header {
+  position: relative;
   background-color: #fff;
   padding: 1em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
@@ -275,8 +279,6 @@ button:hover {
 }
 
 .returnBtn {
-  display: flex;
-  justify-content: left;
-  margin-top: -50px;
-  margin-bottom: 15px;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
