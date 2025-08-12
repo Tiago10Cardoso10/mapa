@@ -281,4 +281,5 @@ button:hover {
 .returnBtn {
   margin-top: -20px;
   margin-bottom: 10px;
+  align-items: center;
 }
