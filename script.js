@@ -85,12 +85,11 @@ function initMap() {
 function openPoster(imgName, popupText) {
   currentLocation = popupText;
   const poster = document.getElementById("poster");
-  const cardImg1 = document.getElementById("cardImg1");
 
-  // Define a imagem específica
-  if (cardImg1 && imgName) {
-    cardImg1.src = `images/cards/${imgName}`;
-  }
+  const cardNumber = Math.floor(Math.random() * 20) + 1;
+  const cardCode = cardNumber.toString().padStart(2, '0');
+  const filename1 = `c${cardCode}i1.jpg`;
+  cardImg1.src = `images/cards/${filename1}`;
 
   if (poster) {
     poster.style.display = "block";
