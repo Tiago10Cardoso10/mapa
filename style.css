@@ -273,3 +273,10 @@ button:hover {
   font-size: 24px;
   cursor: pointer;
 }
+
+.returnBtn {
+  display: flex;
+  justify-content: left;
+  margin-top: -50px;
+  margin-bottom: 15px;
+}

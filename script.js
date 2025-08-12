@@ -57,7 +57,7 @@ function initMap() {
       icon: L.divIcon({
         className: '',
         html: '❤️',
-        iconSize: [24, 24],
+        iconSize: [32, 32],
         iconAnchor: [12, 12]
       })
     }).addTo(map)
@@ -65,25 +65,21 @@ function initMap() {
   }
 
   // Aqui cada local já indica a imagem
-  addHeart(41.27346, -8.08125, "Largo de São Pedro", "c01i1.jpg");
-  addHeart(41.2715, -8.0840, "Zona Ribeirinha", "c02i1.jpg");
-  addHeart(41.2728, -8.0860, "Jardim Público em frente à CMA", "c03i1.jpg");
-  addHeart(41.2741, -8.0845, "Jardim na Rua 31 de Janeiro", "c04i1.jpg");
-  addHeart(41.2730, -8.0875, "Campo da Feira", "c05i1.jpg");
-  addHeart(41.2762, -8.0817, "Santa Luzia (junto ao Solar de Magalhães)", "c06i1.jpg");
-  addHeart(41.2705, -8.0902, "Largo de São Pedro", "c07i1.jpg");
-  addHeart(41.2690, -8.0865, "Zona junto ao elevador do Rossio (parte de cima)", "c08i1.jpg");
-  addHeart(41.2757, -8.0841, "Terminal de Autocarros", "c09i1.jpg");
-  addHeart(41.2723, -8.0833, "Piscinas Municipais", "c10i1.jpg");
-  addHeart(41.2718, -8.0820, "Largo de São Gonçalo", "c11i1.jpg");
-  addHeart(41.2684, -8.0908, "Início da Ponte Velha, do lado de Cepelos", "c12i1.jpg");
-  addHeart(41.2749, -8.0857, "Arquinho (junto à estátua de António Cândido)", "c13i1.jpg");
-  addHeart(41.2780, -8.0892, "Início trilho das Azenhas e trilho da Sra do Vau", "c14i1.jpg");
-  addHeart(41.2710, -8.0885, "Casa da Juventude e Burger King", "c15i1.jpg");
-  addHeart(41.2739, -8.0824, "Lar Conselheiro", "c16i1.jpg");
-  addHeart(41.2775, -8.0803, "UCCI", "c17i1.jpg");
-  addHeart(41.2707, -8.0848, "Estância e SIP", "c18i1.jpg");
-
+  addHeart(41.26996, -8.07849, "Jardim público (frente à CMA)", "c01i1.jpg");
+  addHeart(41.26865, -8.07640, "Jardim na Rua 31 de Janeiro", "c01i1.jpg");
+  addHeart(41.27212, -8.07959, "Campo da Feira", "c01i1.jpg");
+  addHeart(41.27168, -8.08246, "Santa Luzia (junto ao Solar de Magalhães)", "c01i1.jpg");
+  addHeart(41.26977, -8.08125, "Largo de São Pedro", "c01i1.jpg");
+  addHeart(41.26953, -8.07944, "Elevador do Rossio (Largo de Santa Clara)", "c01i1.jpg");
+  addHeart(41.26605, -8.07212, "Terminal de Autocarros (Queimado)", "c01i1.jpg");
+  addHeart(41.26672, -8.08135, "Piscinas Municipais", "c01i1.jpg");
+  addHeart(41.26898, -8.07877, "Largo de São Gonçalo (Praça da República)", "c01i1.jpg");
+  addHeart(41.26886, -8.07803, "Início da Ponte Velha (lado Cepelos)", "c01i1.jpg");
+  addHeart(41.26841, -8.07464, "Arquinho (estátua de António Cândido)", "c01i1.jpg");
+  addHeart(41.26998, -8.07567, "Início Trilho das Azenhas", "c01i1.jpg");
+  addHeart(41.27024, -8.07558, "Início Trilho da Sra. do Vau", "c01i1.jpg");
+  addHeart(41.26727, -8.07918, "Casa da Juventude", "c01i1.jpg");
+  addHeart(41.27253, -8.08945, "Burger King (Pinheiro Manso)", "c01i1.jpg");
 }
 
 function openPoster(imgName, popupText) {
@@ -117,33 +113,24 @@ function sendMessage() {
     return;
   }
 
-  // Exemplo simples: mostra os dados
-  alert(`Mensagem para o local "${currentLocation}":\n\n${message}`);
+  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLScNaYfTIDuHzLwhziM2acDswZhPvoZ4GsI7MC1EkVqoGTdqvg/formResponse";
+  const formData = new FormData();
 
-  // Aqui podes fazer envio real, ex. fetch POST para API:
-  /*
-  fetch('/api/send-message', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      location: currentLocation,
-      message: message
-    })
-  }).then(res => {
-    if(res.ok) {
-      alert('Mensagem enviada com sucesso!');
-      textarea.value = ''; // limpa textarea
-      closePoster();
-    } else {
-      alert('Erro ao enviar mensagem.');
-    }
+  // Estes entry.xxxxxx são os IDs dos campos do seu form
+  formData.append("entry.95954294", currentLocation);
+  formData.append("entry.19310802", message);
+
+  fetch(formURL, {
+    method: "POST",
+    body: formData,
+    mode: "no-cors" // evita bloqueio CORS
+  }).then(() => {
+    alert("Mensagem enviada com sucesso!");
+    textarea.value = '';
+    closePoster();
   });
-  */
-
-  // Fecha o modal e limpa a textarea
-  closePoster();
-  textarea.value = '';
 }
+
 
 // Se existir o container do mapa, inicializa o mapa automaticamente
 document.addEventListener('DOMContentLoaded', () => {
